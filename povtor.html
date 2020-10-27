@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function add(a, b) {
+            return a + b;
+        }
+        
+        function sub(a, b) {
+            return a - b;
+        }
+        
+        function mul(a, b) {
+            return a * b;
+        }
+        
+        function div(a, b) {
+                return a / b;
+        
+        }
+        function  CheckType(val, desc) {
+                if (!isNaN(val)) {
+                    return parseInt(val);
+                } 
+                else {
+                    document.write("<p>" + desc + " Это не число" );
+                    return NaN;
+                }
+            
+            }
+            function testconfig(){
+        if(Object.prototype.toString.call(config).toLowerCase() === '[ object]'){
+              alert(`${JSON.stringify(config)} - объект!`);
+            }else{
+             alert(`${config} - что-то иное, не объект :)`);
+             return config;
+            }
+          }
+            let number1 = prompt("Введите число:");
+            number1 = CheckType(number1, 'number1');
+            if (!isNaN(number1)) {
+                let namb = prompt("Введите один из знаков: + - * /");
+                let number2 = prompt("Введите число:");
+                number2 = CheckType(number2, 'number2');
+                if (!isNaN(number2)) {
+                    let result = undefined;
+                    switch (namb) {
+                        case "+":
+                            result = add(number1,number2);
+                            break;
+                        case "-":
+                            result = sub(number1,number2);
+                            break;
+                        case "*":
+                        result = mul(number1,number2);
+                            if (number2 == 0 ){
+                                alert("Всё равно 0");
+                            }else {
+                                result = mul(number1,number2);
+                            }
+                            break;
+                        case "/":
+                        result = div(number1,number2);
+                            if (number2 == 0 ){
+                                alert("Всё равно 0");
+                            }else {
+                                result = div(number1,number2);
+                            }
+                            break;
+                        default:
+                            document.write("<p>" + namb + " - Вы ввели неверное значение.");
+                    }
+                    if (!isNaN(result)) {
+                        alert( + number1 + " " + namb + " " + number2 + " = " + result);
+                       
+                    }
+                }
+            }
+            
+            function Range(min, max) {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+            
+        
+          function getLargestExpressionResult(a, b) {
+          const results = [a + b, a - b, a * b, a / b];
+          return results.reduce((max, cur) => {
+            if (cur > max) return cur;
+            return max;
+          });
+        }
+         
+        document.write(getLargestExpressionResult(1, 2));
+        document.write(getLargestExpressionResult(-3, -5));
+        
+        
+        
+        
+        
+            
+        
+        
+        
+        
+        
+        
+            </script>
+</body>
+</html>
